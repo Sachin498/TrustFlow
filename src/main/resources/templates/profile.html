@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<div class="container profile-container">
+
+    <div class="title">Profile</div>
+    <div class="content">
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Username:</span>
+                <p>${user.username}</p>
+            </div>
+            <br>
+            <div class="input-box">
+                <span class="details">Email:</span>
+                <p>${user.email}</p>
+            </div>
+            <br>
+
+            <div class="input-box">
+                <span class="details">Age:</span>
+                <p>${user.age}</p>
+            </div>
+            <br>
+
+            <div class="input-box">
+                <span class="details">Address:</span>
+                <p>${user.address}</p>
+            </div>
+            <br>
+            <div class="input-box">
+                <span class="details">Phone:</span>
+                <p>${user.phone}</p>
+            </div>
+            <br>
+            <div class="input-box">
+                <span class="details">Gender:</span>
+                <p>${user.gender}</p>
+            </div>
+            <br>
+        </div>
+
+        <div class="button-container">
+            <form action="/logout" method="post" class="button">
+                <button type="submit">Logout</button>
+            </form>
+
+            <form action="/profile/update" method="get" class="button">
+                <button type="submit">Edit Profile</button>
+            </form>
+
+            <form action="/profile/delete" method="post" class="button" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+                <button type="submit">Delete Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

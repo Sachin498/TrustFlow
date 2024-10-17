@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="title">Registration</div>
+  <div class="content">
+
+    <form id="registerForm" action="/register" method="post">
+      <div class="user-details">
+
+        <div class="input-box">
+          <span class="details">Username</span>
+          <input type="text" name="username" id="username" placeholder="Enter your username" required>
+          <div id="usernameError" class="error"></div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Age</span>
+          <input type="number" name="age" id="age" placeholder="Enter your age" required>
+          <div id="ageError" class="error"></div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input type="text" name="phone" id="phone" placeholder="Enter your phone number" required>
+          <div id="phoneError" class="error"></div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="email" name="email" id="email" placeholder="Enter your email" required>
+          <div id="emailError" class="error"></div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input type="password" name="password" id="password" placeholder="Enter your password" required>
+          <div id="passwordError" class="error"></div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Confirm Password</span>
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" required>
+          <div id="confirmPasswordError" class="error"></div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Address</span>
+          <input type="text" name="address" id="address" placeholder="Enter your address" required style="width: 213%;">
+          <div id="addressError" class="error"></div>
+        </div>
+      </div>
+
+      <div class="gender-details">
+        <input type="radio" name="gender" id="dot-1" value="male" required>
+        <input type="radio" name="gender" id="dot-2" value="female">
+        <input type="radio" name="gender" id="dot-3" value="Prefer not to say">
+        <input type="radio" name="gender" id="dot-4" value="Other">
+        <span class="gender-title">Gender</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefer not to say</span>
+          </label>
+          <label for="dot-4">
+            <span class="dot four"></span>
+            <span class="gender">Other</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="button">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+    <#if error?has_content>
+    <p class="error">${error}</p>
+    </#if>
+  </div>
+</div>
+<script src="../static/validation.js"></script>
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(event) {
+    clearErrors();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const age = document.getElementById('age').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const address = document.getElementById('address').value;
+
+
+    let isValid = true;
+
+    if (validateUsername(username)) {
+      displayError('usernameError', validateUsername(username));
+      isValid = false;
+    }
+
+
+    if (validatePhone(phone)) {
+          displayError('phoneError', validatePhone(phone));
+          isValid = false;
+        }
+
+    if (validateEmail(email)) {
+      displayError('emailError', validateEmail(email));
+      isValid = false;
+    }
+
+    if (validatePassword(password)) {
+      displayError('passwordError', validatePassword(password));
+      isValid = false;
+    }
+
+    if (validateConfirmPassword(password, confirmPassword)) {
+      displayError('confirmPasswordError', validateConfirmPassword(password, confirmPassword));
+      isValid = false;
+    }
+
+
+    if (validateAddress(address)) {
+      displayError('addressError', validateAddress(address));
+      isValid = false;
+    }
+
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+
+
+</script>
+
+</body>
+</html>
