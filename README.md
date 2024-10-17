@@ -69,9 +69,19 @@ In the `Application.kt` file, you need to configure the application to connect t
     ./gradlew run
     ```
 
-This will provide a link on which you can use in your web browser. Navigate to http:/link/login page
+This will provide a link on which you can use in your web browser. 
 
+### Application
 
+Upon launching the application, you are greeted with a Login Page that provides options to either Log In or Register for a new account.
+1. Registration Page:
+   When you click Register, you are redirected to the Registration Page, where you can add your details and create your profile. Each of the fields there have their own criteria, make sure to adhere to the syntax. Upon successful registration, you will be redirected back to the Login Page. 
+2. Login Page: On the Login Page, enter your credentials(user email and password) to log in. If your credentials are incorrect, you will receive an error message. After successful login, you will be taken to your Profile Page.
+3. Profile Management:
+   On your Profile Page, you can view all your account details and you have the following options:
+   - Logout: Safely exit your session.
+   - Delete Account: Permanently remove your account and all associated data.
+   - Update Profile: Modify your details as needed. Ensure that updates adhere to the same validation rules as during registration.
 
 ### Running Tests
 
