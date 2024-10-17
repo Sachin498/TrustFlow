@@ -17,8 +17,21 @@ fun Application.configureRouting(userService: UserService) {
     routing {
         staticResources("/static","static")
         get("/login") {
+        val session = call.sessions.get<UserSession>()
+
+        if (session != null) {
+            // If there's an active session, redirect to the profile page
+            val user = userService.getUserDetails(session.email)
+            if (user != null) {
+                call.respondRedirect("/profile")
+            } else {
+                call.sessions.clear<UserSession>()
+                call.respond(FreeMarkerContent("login.html", null))
+            }
+        } else {
             call.respond(FreeMarkerContent("login.html", null))
         }
+    }
 
         post("/login") {
             val params = call.receiveParameters()

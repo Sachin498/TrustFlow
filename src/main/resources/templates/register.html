@@ -114,6 +114,10 @@
       isValid = false;
     }
 
+    if (validateAge(age)) {
+            displayError('ageError', 'Please enter a valid age (1-120).');
+            isValid = false;
+        }
 
     if (validatePhone(phone)) {
           displayError('phoneError', validatePhone(phone));
