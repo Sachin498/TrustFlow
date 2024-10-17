@@ -16,6 +16,10 @@ fun Application.configureRouting(userService: UserService) {
 
     routing {
         staticResources("/static","static")
+        get("/"){
+            call.respondRedirect("/login")
+        }
+
         get("/login") {
         val session = call.sessions.get<UserSession>()
 
